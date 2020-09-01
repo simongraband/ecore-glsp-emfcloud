@@ -12,5 +12,6 @@
     <modules>
         <module>org.eclipse.emfcloud.ecore.backend</module>
         <module>org.eclipse.emfcloud.ecore.glsp</module>
+        <module>org.eclipse.emfcloud.ecore.modelserver</module>
     </modules>
 </project>
