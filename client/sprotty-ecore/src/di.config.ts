@@ -9,6 +9,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR MIT
  ********************************************************************************/
 import "@eclipse-glsp/client/css/glsp-sprotty.css";
+import "balloon-css/balloon.min.css";
 import "sprotty/css/edit-label.css";
 
 import {
