@@ -12,7 +12,9 @@ package org.eclipse.emfcloud.ecore.glsp.registry;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,9 +41,11 @@ import com.google.inject.Inject;
 public class EcoreDIOperationHandlerRegistry implements OperationHandlerRegistry {
 
 	private final MapRegistry<String, List<OperationHandler>> internalRegistry;
+	private Map<String,Operation> operations;
 
 	@Inject
 	public EcoreDIOperationHandlerRegistry(Set<OperationHandler> handlers) {
+		operations=new HashMap<>();
 		internalRegistry = new MapRegistry<>() {
 		};
 		handlers.forEach(handler -> {
@@ -56,6 +60,7 @@ public class EcoreDIOperationHandlerRegistry implements OperationHandlerRegistry
 		List<OperationHandler> handlers;
 		if (!internalRegistry.hasKey(keyStr)) {
 			handlers = new ArrayList<>();
+			operations.put(keyStr, key);
 			internalRegistry.register(keyStr, handlers);
 		} else {
 			Optional<List<OperationHandler>> optional = internalRegistry.get(keyStr);
@@ -95,7 +100,6 @@ public class EcoreDIOperationHandlerRegistry implements OperationHandlerRegistry
 
 	@Override
 	public Set<Operation> keys() {
-		// TODO Auto-generated method stub
-		return null;
+		return operations.keySet().stream().map(operations::get).collect(Collectors.toSet());
 	}
 }

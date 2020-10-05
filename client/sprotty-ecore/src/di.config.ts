@@ -47,6 +47,8 @@ import {
     openModule,
     paletteModule,
     PolylineEdgeView,
+    PreRenderedElement,
+    PreRenderedView,
     RectangularNodeView,
     routingModule,
     saveModule,
@@ -134,6 +136,7 @@ export default (containerId: string): Container => {
         configureModelElement(context, "edge:inheritance", InheritanceEdge, InheritanceEdgeView);
         configureModelElement(context, "edge:composition", CompositionEdge, CompositionEdgeView);
         configureModelElement(context, "edge", SEdge, PolylineEdgeView);
+        configureModelElement(context, "pre-rendered", PreRenderedElement, PreRenderedView);
         configureViewerOptions(context, {
             needsClientLayout: true,
             baseDiv: containerId
@@ -145,7 +148,7 @@ export default (containerId: string): Container => {
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditUiModule, glspEditLabelModule,
         executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
         glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
-        layoutCommandsModule, labelEditModule, saveModule, copyPasteContextMenuModule, navigationModule, markerNavigatorModule, classDiagramModule, );
+        layoutCommandsModule, labelEditModule, saveModule, copyPasteContextMenuModule, navigationModule, markerNavigatorModule, classDiagramModule);
 
     return container;
 
